@@ -1,0 +1,113 @@
+﻿@model HsmBI.Vendors
+
+@{
+    ViewBag.Title = "Vendor's Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li ><a href="~/Vendors/">Vendors</a> </li>
+            <li>Profile</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <section class="panel panel-profile widget ">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h4>@ViewBag.Title</h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel widget light-widget panel-bd-top">
+                        <div class="panel-heading no-title"></div>
+                        <div class="panel-body">
+                            <div class="text-center col-xs-12" style="padding-left :0px;">
+                                <img alt="Vendor's Image" class="img-circle" src="~/Content/photos/@Model.photo">
+                            </div>
+                            <div class="row" style="padding-right:15px;">
+                                <div class="col-xs-12"> <a class="btn vd_btn vd_bg-green btn-xs btn-block no-br">@Model.Fullname  </a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="pd-20">
+                        <div class="row" >
+                            <div class="vd_info tr">
+                                <a class="btn vd_btn btn-xs vd_bg-yellow" href="~/Vendors/edit/@Model.id"> <i class="fa fa-pencil append-icon"></i> Edit </a>
+                                <a href="~/Vendors/Create" class="btn vd_btn btn-xs vd_bg-green "><i class="fa fa-plus-circle append-icon"></i> Create New</a>
+                                <a href="~/Vendors/" class="btn vd_btn btn-xs  vd_bg-grey "><i class="fa fa-list append-icon"></i> Back to list</a>
+                            </div>
+                            @*<div class="col-md-4"><h3 class="mgbt-xs-15 mgtp-10 font-semibold"><i class="icon-user mgr-10 profile-icon"></i> ABOUT</h3></div>*@ 
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5 control-label">Fullname:</label>
+                                    <div class="col-xs-7 controls">@Model.Fullname  </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5 control-label">Address:</label>
+                                    <div class="col-xs-7 controls">@Model.Address </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5 control-label"><i class="icon icon-phone"></i> Mobile:</label>
+                                    <div class="col-xs-7 controls">@Model.Mobile </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5 control-label"><i class="icon icon-envelope"></i> E-Mail:</label>
+                                    <div class="col-xs-7 controls">@Model.eMail </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5 control-label"><i class="icon icon-cog"></i> BB Pin: </label>
+                                    <div class="col-xs-7 controls">@Model.BBMPin  </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5 control-label">Bank AC:</label>
+                                    <div class="col-xs-7 controls">@Model.BankAC  </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <h4>Transactions/Services</h4>
+
+                        <!-- row -->
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </section>
+</div>

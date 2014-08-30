@@ -1,0 +1,89 @@
+﻿@model IEnumerable<HsmBI.vwMembersList_General>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Reports", "Index", "Report")</li>
+    <li class="active">Alphabetical List</li>
+</ol>
+<hr />
+<h2>Choir List</h2>
+
+<div class="row">
+    <div class="panel-body">
+        <div class="col-md-12 large alphalist">
+            @Html.AlphabeticalPager(ViewData["currentPage"].ToString(), x => Url.Action("List", new { alpha = x }), true)
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row row-fluid">
+    <div class="panel">
+        <div class="panel-heading">
+            <h4 id="akole"></h4>
+        </div>
+        <div class="panel-body">
+            <img id="loader" hidden="hidden" src="~/Content/images/ajax-loader.gif" />
+            <div id="memberlist" class="innerLR">
+                @{
+                    var grid = new WebGrid(
+                        Model, canPage: true, rowsPerPage: 50, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent",
+                        canSort: true);
+                    grid.Pager(WebGridPagerModes.All);
+                    
+                }
+
+                <div id="gridContent">
+                    @grid.Table(
+                    tableStyle:"table table-striped table-bordered table-responsive table-hover",
+                    columns: grid.Columns(
+                    grid.Column("MemberId",header:"ID",canSort:true ),
+                    grid.Column("Fullname","Fullname",canSort:true ),
+                    grid.Column("Part","Part",canSort:true),
+                    grid.Column("Split","Split",canSort:true),
+                    grid.Column("MobileNo","Mobile No"),
+                    grid.Column("eMail","@Mail"),
+                    grid.Column ("Friendship_Group", "Friendship"),
+                    grid.Column("MaritalStatus","M. Status",canSort:true )
+                    ))
+                    <div class="pagination pagination-sm pagination-right">
+                        @grid.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-lg pagination-right")
+                    </div>
+                </div>
+                @*<table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fullname</th>
+                            <th>Part</th>
+                            <th>Split</th>
+                            <th>Mobile No</th>
+                            <th>eMail</th>
+                            <th>Friendship Grp</th>
+                            <th>M. Status</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                        {
+                            <tr>
+                               <td>@Html.DisplayFor(modelItem => item.MemberId )</td>
+                                <td>@Html.DisplayFor(modelItem => item.Fullname )</td>
+                                <td>@Html.DisplayFor(modelItem => item.Part )</td>
+                                <td>@Html.DisplayFor(modelItem => item.Split )</td>
+                                <td>@Html.DisplayFor(modelItem => item.MobileNo )</td>
+                                <td>@Html.DisplayFor(modelItem => item.eMail )</td>
+                                <td>@Html.DisplayFor(modelItem => item.Friendship_Group )</td>
+                                <td>@Html.DisplayFor(modelItem => item.MaritalStatus )</td>
+                            </tr>
+                        }
+                </table>*@
+            </div>
+        </div>
+    </div>
+</div>
+

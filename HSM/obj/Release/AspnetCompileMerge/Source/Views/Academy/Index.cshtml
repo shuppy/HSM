@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HsmBI.Academy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li><a href="../../">Home</a></li>
+    <li>@Html.ActionLink("Academy", "Index", "Academy") </li>
+    <li class="active">List</li>
+</ol>
+<hr />
+<h2>Academy</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.sn }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sn }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sn })
+        </td>
+    </tr>
+}
+
+</table>

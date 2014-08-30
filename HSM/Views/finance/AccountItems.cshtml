@@ -1,0 +1,120 @@
+﻿@model IEnumerable<HsmBI.AccountItems>
+
+@{
+    ViewBag.Title = "Account Items";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/members/">Finace</a></li>
+            <li class="active">Account Items</li>
+        </ol>
+    </div>
+</div>
+<section class="panel panel-primary ">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <h4>
+                @ViewBag.Title
+                <a role="button" class="btn-sm btn-default pull-right" href="@Url.Action("createaccount")">Create New</a>
+            </h4>
+        </div>
+        <p>
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-warning">@TempData["error"]</div>
+            }
+        </p>
+    </div>
+    <div class="panel-body">
+        <section>
+            <div class="row">
+
+                <table id="tbitems" class="table table-striped table-responsive table-hover"   >
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Code)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            @*<th>
+                @Html.DisplayNameFor(model => model.Debit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credit)
+            </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.Balance)
+                            </th>
+                            @*<th>
+                @Html.DisplayNameFor(model => model.ControlAC)
+            </th>*@
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NominalLedger.Description)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                   
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Code)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                @*<td>
+                    <label >@string.Format("{0:N2}", @item.Debit.ToString()) </label>
+                </td>
+                <td>
+                    <label>@string.Format("{0:N2}", @item.Credit.ToString()) </label>
+                </td>*@
+                                <td>
+                                    <label style="float:right ">@string.Format("{0:N2}", (double)@item.Balance) </label>
+                                </td>
+                                @*<td>
+                    @Html.DisplayFor(modelItem => item.ControlAC)
+                </td>*@
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NominalLedger.Description)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "EditAccount", new { id = item.ID }, new { @class = "btn-sm btn-default" }) |
+                                    @Html.ActionLink("Delete", "DeleteAccount", new { id = item.ID }, new { @class = "btn-sm btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                   
+
+                </table>
+            </div>
+        </section>
+    </div>
+</section>
+
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $('#tbitems').dataTable();
+    })
+    </script>
+}

@@ -1,0 +1,174 @@
+﻿@model HsmBI.journals
+
+@{
+    ViewBag.Title = "expenses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li class="active">Expenses</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <section class="panel panel-profile  widget">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h4>
+                    @ViewBag.Title
+                </h4>
+            </div>
+            <p>
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-warning">@TempData["error"]</div>
+                }
+            </p>
+        </div>
+        <div class="panel-body">
+            <section>
+                <div class="row col-md-7">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.journaltype_id, "Journal Type", new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.DropDownList("journaltype_id", (SelectList)ViewBag.journaltype_id, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.journaltype_id)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vendor_id" class="control-label col-md-3">Vendor</label>
+                                <div class="col-md-9">
+                                    @Html.DropDownList("vendor_id", (SelectList)ViewBag.Vendor, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Amount, new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.DecimalNumbersTextBox("Amount")
+                                    @Html.ValidationMessageFor(model => model.Amount)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Narration, new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.TextArea("Narration", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Narration)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.transdate, new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.DatePickerFor(model => model.transdate)
+                                    @Html.ValidationMessageFor(model => model.transdate)
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-9">
+                                    <input type="submit" value="Post" class="btn btn-xs btn-default" /> @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-xs btn-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            HtmlHelpers.Init();
+
+            //$('#accountno').autocomplete({
+            //    source: function (request, response) {
+            //        $.ajax({
+            //            url: "~/Customers/accountAutocomplete",
+            //            type: "POST",
+            //            dataType: "json",
+            //            data: { term: request.term },
+            //            success: function (data) {
+            //                response($.map(data, function (item) {
+            //                    return { label: item.AccountNumber, value: item.AccountNumber };
+            //                }))
+
+            //            }
+            //        })
+            //    },
+            //    messages: {
+            //        noResults: "", results: ""
+            //    }
+            //});
+
+            $('.typeahead-ac').typeahead({
+                minLength: 3,
+                source: function (query, process) {
+                    return $.ajax({
+                        url: "~/Customers/AccountsList/" + query,
+                        dataType: 'json',
+                        success: function (data) {
+                            return typeof data == 'undefined' ? false : process(data);
+                        }
+                    });
+                },
+                updater: function (item) {
+                    $.ajax({
+                        url: "~/Customers/AccountListCount/" + item,
+                        dataType: 'json',
+                        success: function (data) {
+                            var count = data;
+                            $('.output-count').text(count.Total);
+                            $('.output-name').text(item);
+                        }
+                    });
+                }
+            });
+        });
+        // Attach typeahead to account
+
+        var HtmlHelpers = {
+            Init: function () {
+                $(".filtered-text").keypress(HtmlHelpers.FilteredTextBox.CheckValue);
+            }
+        };
+
+        HtmlHelpers.FilteredTextBox = {
+            CheckValue: function (event) {
+                var value = String.fromCharCode(event.which);
+                var regex = new RegExp($(this).attr("data-regex"), "");
+
+                if (regex.test(value)) {
+                    event.preventDefault();
+                }
+            }
+        };
+
+        //$(document).bind('keypress', 'f3', function () {
+        //    alert("Save");
+        //});
+
+
+    </script>
+}

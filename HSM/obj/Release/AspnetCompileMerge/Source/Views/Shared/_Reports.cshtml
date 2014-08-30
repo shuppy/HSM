@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+
+    <title>@ViewBag.Title - Healing Stream of God Portal</title>
+    <script src="~/Scripts/excanvas.js"></script>
+    @*Lets do manual link. I think the issue with the boudle css is the js, the js is trying to
+        locate the resources based on the location of the file. That is its not loading the resources linked to from the layout
+        its loading it as if the link to the resources originates from itself.
+        so when u have ../scripts/bootstrap.min.js in layout and the child form is not directly in
+        the same tree level with the boundle file, the referenced file will not be found.
+        the file will be interpreted as it is on the layout form ../scripts/bootstrap.min.js instead of ../..nsub/scripts/bootstrap.min.js*@
+    @Styles.Render("~/Content/bundlecss")
+    @*Include needed jscripts*@
+    @Scripts.Render("~/bundles/jfirst")
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36057737-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <script src="../Scripts/less.min.js"></script>
+
+</head>
+<body class="">
+    <!-- Main Container Fluid -->
+    <div class="container-fluid fluid menu-left" style="visibility:visible">
+
+        <!-- Top navbar -->
+        <div class="navbar main hidden-print">
+
+            <!-- Brand -->
+
+            <a href="../" class="appbrand pull-left"><span>HSoG&reg; Portal - &copy; @DateTime.Now.Year  <span>v1</span></span></a>
+
+            <!-- Menu Toggle Button -->
+            <button type="button" class="btn btn-navbar">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <!-- // Menu Toggle Button END -->
+            <!-- Top Menu -->
+            <ul class="topnav pull-left tn1">
+
+                <li class="hidden-phone">
+
+                    <a class="glyphicons brightness_increase" href="../"><i></i>The Healing Streams of God.</a>
+                </li>
+
+            </ul>
+            <!-- // Top Menu END -->
+            <!-- Top Menu Right -->
+            <ul class="topnav pull-right">
+
+
+                <!-- Profile / Logout menu -->
+                <li class="account">
+                    <a data-toggle="dropdown" href="#" class="glyphicons logout lock"><span class="hidden-phone text">User Account</span><i></i></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#" class="glyphicons cogwheel">Settings<i></i></a></li>
+                        <li class="highlight profile">
+                            <span>
+                                <span class="heading">Profile <a href="#" class="pull-right">edit</a></span>
+                                <span class="img"></span>
+                                <span class="details">
+                                    <a href="#">@Html.Partial("_LoginPartial")</a>
+                                    contact@domain.com
+                                </span>
+                                <span class="clearfix"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <a class="btn btn-default btn-mini pull-right" href="#">
+                                    @Html.Partial("_LoginPartial")
+                                </a>
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <!-- // Profile / Logout menu END -->
+
+            </ul>
+            <!-- // Top Menu Right END -->
+
+
+        </div>
+        <!-- Top navbar END -->
+        <!-- Sidebar menu & content wrapper -->
+        <div id="wrapper">
+
+            <!-- Sidebar Menu -->
+            <div id="menu" class="hidden-phone hidden-print">
+
+                <!-- Scrollable menu wrapper with Maximum height -->
+                <div class="slim-scroll" data-scroll-height="800px">
+
+                    <!-- Sidebar Profile -->
+                    <span class="profile">
+                        <a class="img" href="#">
+                            <img src="../App_Themes/img/mrawesome.jpg" alt="User picture" />
+                        </a>
+                        <span>
+                            <strong>Welcome</strong>
+                            <a href="#" class="glyphicons right_arrow">
+                                <i>
+                                    @Html.Partial("_LoginPartial")
+                                </i>
+                            </a>
+                        </span>
+                    </span>
+                    <!-- // Sidebar Profile END -->
+                    <!-- Sidebar Mini Stats -->
+                    <!-- // Sidebar Mini Stats END -->
+                    <!-- Regular Size Menu -->
+                    <ul>
+
+
+                        <!-- Menu Regular Item -->
+                        <li class="glyphicons display active"> @Html.ActionLink("Reports", "Index", "Reports") </li>
+                        <li class=" glyphicons film" > @Html.ActionLink("Carousel", "Carousel", "Reports")</li>
+                        <li class=" glyphicons refresh"> @Html.ActionLink("Alphabetical List", "List", "Reports")</li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+
+
+                </div>
+                <!-- // Scrollable Menu wrapper with Maximum Height END -->
+
+            </div>
+            <!-- // Sidebar Menu END -->
+            <!-- Content -->
+            <div id="content">
+                <!-- Filters -->
+                @RenderBody()
+
+                <!-- // Footer END -->
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - HsoG&reg; - Healing Streams of God's Portal </p>
+                </footer>
+            </div>
+           
+
+        </div>
+        @*<script type="text/javascript" src="../Scripts/jsapi"></script>*@
+        @Scripts.Render("~/bundles/jquery")
+        <script src="~/Scripts/jsoncalls.js"></script>
+
+        @RenderSection("scripts", required: false)
+        <!-- Global -->
+        <script>
+            var basePath = '../Content/';
+        </script>
+
+        <!-- Colors -->
+        <script>
+            var primaryColor = '#e25f39',
+                dangerColor = '#bd362f',
+                successColor = '#609450',
+                warningColor = '#ab7a4b',
+                inverseColor = '#45484d';
+        </script>
+
+        <!-- Themer -->
+        <script>
+            var themerPrimaryColor = primaryColor;
+        </script>
+
+
+
+    </div>
+
+
+</body>
+</html>

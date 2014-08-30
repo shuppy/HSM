@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HsmBI.FriendshipGroups>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<div class="pageheader">
+    <h2><i class="icon icon-group"></i> Friendship Group</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/members/">Membership</a></li>
+            <li class="active" >Friendship Groups</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="inner-shadow" >
+        <div class="panel panel-default">
+            <div class="panel-heading" >
+                <div class="panel-title" >
+                    <h3>
+                        Friendship Groups @Html.ActionLink("Create New", "Create", "FriendshipGroups", null, new { @class = "pull-right btn btn-primary" })
+                    </h3>
+                    
+                </div>
+            </div>
+            <div class="panel-body" >
+                <table class="table table-bordered table-striped table-hover table-responsive">
+                    <tr>
+                        @*<th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @*<td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ClubId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ClubId })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

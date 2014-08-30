@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+
+    <title>@ViewBag.Title - Healing Stream of God Portal</title>
+    @Styles.Render("~/Content/bracket")
+    <link href="~/Content/DataTables-1.10.2/media/css/jquery.dataTables.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="">
+    <div id="preloader">
+        <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
+    </div>
+
+    <section>
+
+        <div class="leftpanel">
+
+            <div class="logopanel">
+                <h1><span>{</span> HSoG <span>}</span></h1>
+            </div><!-- logopanel -->
+
+            <div class="leftpanelinner">
+
+                <!-- This is only visible to small devices -->
+                <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                    <div class="media userlogged">
+                        <img alt="" src="images/photos/loggeduser.png" class="media-object">
+                        <div class="media-body">
+                            <h4>Welcome</h4>
+                            <span>"Life is so..."</span>
+                        </div>
+                    </div>
+
+                    <h5 class="sidebartitle actitle">Account</h5>
+                    <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+                        <li><a href=""><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                        <li><a href=""><i class="fa fa-cog"></i> <span>Account Settings</span></a></li>
+                        <li><a href=""><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
+                        <li>@Html.Partial("_LoginPartial")</li>
+                    </ul>
+                </div>
+
+                <h5 class="sidebartitle">Navigation</h5>
+                <ul class="nav nav-pills nav-stacked nav-bracket">
+                    <li><a><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                    <li class="nav-parent nav-active active">
+                        <a href=""><i class="fa fa-users"></i> <span>Membership</span></a>
+                        <ul class="children" style="display:block">
+                            <li><a href="~/Members/"><i class="fa fa-caret-right"></i> Members List</a></li>
+                            <li><a href="~/ChoirSplits/Reshuffle/"><i class="fa fa-caret-right"></i> Split Management</a></li>
+                            <li><a href="~/FriendshipGroups/Reshuffle/"><i class="fa fa-caret-right"></i> Friendship Mgt</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-parent">
+                        <a href=""><i class="icon icon-xing"></i> <span>Wardrobe</span></a>
+                    </li>
+                    <li class="nav-parent">
+                        <a href="../finance/"><i class="fa fa-money"></i> <span>Finance</span></a>
+                        <ul class="children" style="display:block  ">
+                            <li><a href="~/finance/dues"><i class="fa fa-caret-right"></i> Dues</a></li>
+                            <li><a href="~/finance/income"><i class="fa fa-caret-right"></i> Income</a></li>
+                            <li><a href="~/finance/expenses"><i class="fa fa-caret-right"></i> Expenses</a></li>
+                            <li><a href="~/finance/accountitems"><i class="fa fa-caret-right"></i> Account Items</a></li>
+                            <li><a href="~/finance/payables"><i class="fa fa-caret-right"></i> Payables</a></li>
+                            <li><a href="~/finance/Ledger"><i class="fa fa-caret-right"></i> Ledger</a></li>
+                            <li><a href="~/Journals/"><i class="fa fa-caret-right"></i> Journals</a></li>
+                            <li><a href="~/finance/trialbalance"><i class="fa fa-caret-right"></i> Trial Balance</a></li>
+                        </ul>
+                        <ul class="children" style="display:block">
+                            <li><a href="~/finance/CreateAccount"><i class="fa fa-caret-right"></i> Create Account</a></li>
+                            <li><a href="~/finance/nLedgers"><i class="fa fa-caret-right"></i> Nominal Ledger</a></li>
+    
+
+                        </ul>
+                    </li>
+                    <li><a href="maps.html"><i class="fa fa-map-marker"></i> <span>Maps</span></a></li>
+                    <li class="nav-parent">
+                        <a href=""><i class="icon icon-file-pdf"></i> <span>Reports</span></a>
+                        <ul class="children">
+                            <li><a href="~/Report/"><i class="fa fa-caret-right"></i> Members' Report</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-parent">
+                        <a href="layouts.html"><i class="icon icon-settings"></i> <span>Settings</span></a>
+                        <ul class="children">
+                            <li><a href="~/Academy/"><i class="fa fa-caret-right"></i> Academy</a></li>
+                            <li><a href="~/ChoirParts/"><i class="fa fa-caret-right"></i> Choir Parts</a></li>
+                            <li><a href="~/ChoirSplits/"><i class="fa fa-caret-right"></i> Choir Splits</a></li>
+                            <li><a href="~/Availability/"><i class="fa fa-caret-right"></i> Availability</a></li>
+                            <li><a href="~/FriendshipGroups/"><i class="fa fa-caret-right"></i> Friendship</a></li>
+                            <li><a href="~/Occupations/"><i class="fa fa-caret-right"></i> Occupations</a></li>
+                            <li><a href="~/Posts/"><i class="fa fa-caret-right"></i> Positions</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+            </div><!-- leftpanelinner -->
+        </div><!-- leftpanel -->
+
+        <div class="mainpanel">
+
+            <div class="headerbar">
+
+                <a class="menutoggle"><i class="fa fa-bars"></i></a>
+                <div class="header-left">
+                    <h4 style="padding-left:10px"> The Healing Streams of God, Daystar Christian Center.</h4>
+                </div>
+                <!-- header-right -->
+
+
+            </div><!-- headerbar -->
+
+
+            <div class="contentpanel">
+
+                <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+                <script src="~/Scripts/jquery-ui-1.11.1.js"></script>
+
+                @RenderSection("scripts", required: false)
+                @RenderBody()
+                <hr />
+
+            </div>
+            <footer class="clearfix">
+                <div class="col-md-4 pull-left text-center-xs col-sm-12">&copy; @DateTime.Now.Year - HSoG&reg; v3 - All rights Reserved. </div>
+                <div class="col-md-8 pull-right col-sm-12" ><i class="icon icon-checkbox-checked"></i> M-i-N (Made In Nigeria) by - <a>Technical Team, The Healing Streams of God, Daystar Christian Center.</a>.</div>
+            </footer>
+        </div><!-- mainpanel -->
+
+        
+    </section>
+
+    @Scripts.Render("~/bundles/bracket")
+    <script src="~/Scripts/DataTables-1.10.2/media/js/jquery.dataTables.js"></script>
+    @*Typeahead scripts*@
+    @*@Scripts.Render("~/bundles/typeahead")
+    @RenderSection("scripts", required: false)*@
+
+
+
+</body>
+</html>

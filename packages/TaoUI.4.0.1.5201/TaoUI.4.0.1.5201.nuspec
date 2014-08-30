@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>TaoUI</id>
+    <version>4.0.1.5201</version>
+    <title>TaoUI</title>
+    <authors>Ray</authors>
+    <owners>Ray</owners>
+    <licenseUrl>http://taoui.dotnetage.com/License</licenseUrl>
+    <projectUrl>http://taoui.dotnetage.com/</projectUrl>
+    <iconUrl>http://www.dotnetage.com/webshared/home/images/dna-250.jpg</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Support Html5/Css3/jQuery
+Offers more than 30 UI widgets and fully API supports.
+Ships font icons and providers over 400 icons.
+12 Columns Grid system
+Support Web Responsive Design
+Themable and provider online theme designer
+Comprehensive docs
+Support Less
+Under MIT License</description>
+    <summary>The Html5 UI build for responsive web design , mobile first project and rapid web developing.</summary>
+    <releaseNotes>New features
++ Added scroll detector widget
++ Added slideshow widget
++ Added Timeline view
++ Added page templates for TaoUI
++ Enhance panel widget to contain elements on header and footer.
+
+Bug fixed
+* Fixed the arrows css style.
+* Fixed the popup widget can overlay element can not block elements bug.</releaseNotes>
+    <copyright>2014 by DotNetAge</copyright>
+    <tags>Html5 Css3 jQuery Less UI</tags>
+    <dependencies>
+      <dependency id="jQuery" version="1.9.1" />
+      <dependency id="Modernizr" version="2.7.2" />
+    </dependencies>
+  </metadata>
+</package>

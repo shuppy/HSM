@@ -1,0 +1,46 @@
+﻿@model HsmBI.Academy
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li><a href="../../">Home</a></li>
+    <li>@Html.ActionLink("Academy", "Index", "Academy") </li>
+    <li class="active">Delete</li>
+</ol>
+<hr />
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Academy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

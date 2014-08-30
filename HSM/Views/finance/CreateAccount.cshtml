@@ -1,0 +1,126 @@
+﻿@model HsmBI.AccountItems
+
+@{
+    ViewBag.Title = "Create Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageheader">
+    <h2><i class="icon icon-add-to-list"></i> Create Account Item</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li>Account Items</li>
+            <li class="active">Create</li>
+        </ol>
+    </div>
+</div>
+<section class="panel panel-primary panel-alt">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <h4>
+                @ViewBag.Title
+                
+            </h4>
+        </div>
+        <p>
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-warning">@TempData["error"]</div>
+            }
+        </p>
+    </div>
+    <div class="panel-body">
+        <section>
+            <div class="row">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        
+                        @Html.ValidationSummary(true)
+
+                        
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Ledger_Id, "Nominal Ledger", new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Ledger_Id", (SelectList)ViewBag.Ledger_Id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Ledger_Id)
+                            </div>
+                            <div class="col-md-2">
+                                <a role="button" data-toggle="modal" data-target="#nominal" class="btn btn-primary-alt btn-sm" title="Nominal Ledger"><span class="icon icon-bookmark"  >&nbsp;Add New</span> </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Description,new {@class="form-control"})
+                                @Html.ValidationMessageFor(model => model.Description)
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Debit, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Debit)
+                                @Html.ValidationMessageFor(model => model.Debit)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Credit, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Credit)
+                                @Html.ValidationMessageFor(model => model.Credit)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Balance, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Balance)
+                                @Html.ValidationMessageFor(model => model.Balance)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ControlAC, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ControlAC)
+                                @Html.ValidationMessageFor(model => model.ControlAC)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Ref, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Ref)
+                                @Html.ValidationMessageFor(model => model.Ref)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Status)
+                                @Html.ValidationMessageFor(model => model.Status)
+                            </div>
+                        </div>*@
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-sm btn-default" /> <a href="accountitems" role="button" class="btn btn-sm btn-primary">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+</div>
+</section>
+</div>
+</section>

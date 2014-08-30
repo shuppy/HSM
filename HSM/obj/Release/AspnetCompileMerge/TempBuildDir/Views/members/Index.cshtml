@@ -1,0 +1,98 @@
+﻿@model IEnumerable< HsmBI.vwMembersList_General >
+
+@{
+    ViewBag.Title = "Members List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="pageheader">
+    <h2><i class="icon icon-users"></i> Members</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/members/">Membership</a></li>
+            <li class="active">Members List</li>
+        </ol>
+    </div>
+</div>
+<section class="panel panel-primary panel-alt">
+    <div class="panel-heading">
+        <div class="panel-title" >
+            <h4>
+                @ViewBag.Title
+                <a role="button" class="btn btn-default pull-right" href="@Url.Action("create")">Create New</a>
+            </h4>
+        </div>
+        <p>
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-warning">@TempData["error"]</div>
+            }
+    </p>
+    </div>
+    <div class="panel-body" >
+        <section>
+            <div class="row">
+                <div class="col-md-6">
+                    <form role="form">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Search</button>
+                            </span>
+                            <input type="text" class="form-control" id="q" placeholder="Search by name...">
+                            <input type="hidden" value="1" id="page" />
+                            <input type="hidden" value="25" id="size" />
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </section>
+        <section id="results">
+            <table id="tbl" class="table table-striped table-striped table-responsive">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("details", new { id = item.MemberId })"><img src="/Content/images/photos/@item.Photo" style="height: 132px;" /></a>
+                        </td>
+                        <td>
+                            <h4>@item.Fullname</h4>
+                            <p>@string.Format("{0}, {1}", item.MobileNo, item.eMail)</p>
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }, new { role = "button", @class = "btn btn-primary btn-xs" })
+                                @Html.ActionLink("Details", "Details", new { id = item.MemberId }, new { role = "button", @class = "btn btn-primary btn-xs" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MemberId }, new { role = "button", @class = "btn btn-danger btn-xs" })
+                            </p>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            <br />
+
+            
+        </section>
+    </div>
+    <div class="panel-footer" >
+        <p class="text-left">
+            <button id="btmore" type="button" class="btn btn-default btn-sm">Load More Members...</button>
+        </p>
+    </div>
+</section>
+
+
+
+@section scripts {
+    
+    <script>
+        $('#q').keyup(function () {
+            searchMembers($(this).val());
+        });
+        $('#btmore').click(function () {
+            searchMembers($(this).val());
+        });
+    </script>
+}

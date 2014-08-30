@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HsmBI.ChoirParts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li><a href="../../">Home</a></li>
+    <li>@Html.ActionLink("Choir Parts", "Index", "ChoirParts") </li>
+    <li class="active">List</li>
+</ol>
+<hr />
+<h2>Choir Parts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-bordered table-responsive table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Part)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Part)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.sn }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sn }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sn })
+        </td>
+    </tr>
+}
+
+</table>

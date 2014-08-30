@@ -1,0 +1,40 @@
+﻿@model HsmBI.Academy
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li><a href="../../">Home</a></li>
+    <li>@Html.ActionLink("Academy", "Index", "Academy") </li>
+    <li class="active">Details</li>
+</ol>
+<hr />
+<h2>Details</h2>
+
+<div>
+    <h4>Academy</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.sn }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

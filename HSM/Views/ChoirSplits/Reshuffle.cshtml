@@ -1,0 +1,116 @@
+﻿@model IEnumerable<HsmBI.vwMembersList_General>
+
+@{
+    ViewBag.Title = "Reshuffle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li><a href="../../">Home</a></li>
+    <li><a href="../Members/">Membership</a> </li>
+    <li>Splits</li>
+    <li class="active">Reshuffle</li>
+</ol>
+<hr />
+
+<div class="row row-fluid">
+    <div class="innerLR">
+        <div class="widget">
+            <div class="panel-heading">
+                <div class="innerAll">
+                    <div class="form-horizontal">
+
+                        <div class="row">
+
+
+                            @*@using (Html.BeginForm("viewsplit","ChoirSplits"))
+                                {
+                                    @Html.DropDownList("SplitId", ViewBag.Splits as SelectList, new { @class = "form-control" })
+                                    <br />
+                                <button  type="submit" id="btnSplit" class="btn btn-primary btn-sm" >View by part</button>
+                                }*@
+                            @Html.SplitOption(ViewData["currentSplit"].ToString(), x => Url.Action("Reshuffle", new { split = x }))
+                            <hr />
+                            @Html.PartOption(ViewData["currentPart"].ToString(), x => Url.Action("Reshuffle", new { part = x }))
+                        </div>
+                        <hr />
+
+                        @*<label for="PartId" class="control-label col-sm-2">Part</label>
+                            <div class="col-md-6">
+                                @Html.DropDownList("PartId", ViewBag.Parts as SelectList, new { @class = "form-control" })
+                                <br />
+                                <input type="submit" id="btnpart" class="btn btn-primary btn-sm" value="View by part" />
+                            </div>*@
+
+
+                        @*<div class="col-md-3">
+                                <a  id="btnsplitpart" class="btn btn-primary btn-sm">Split and Part</a>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="innerLR">
+                @using (Html.BeginForm("movetosplit", "ChoirSplits"))
+                {
+                    //Put the choir to move to on top
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="choir" class="control-label col-sm-4" >Move to:</label>
+                            <div class="col-md-4">
+                                @Html.DropDownList("choir", ViewBag.Splits as SelectList, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-4">
+                                <input type="submit" value="Assign..." class="btn btn-sm btn-active" />
+                            </div>
+                        </div>
+                    </div>
+                    //Choir List selected from the main option.
+
+                    var grid = new WebGrid(
+                        Model, canPage: true, rowsPerPage: 50, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent",
+                        canSort: true);
+                    grid.Pager(WebGridPagerModes.All);
+
+
+
+                    <div id="gridContent">
+                        @grid.Table(
+                    tableStyle: "table table-striped table-bordered table-responsive table-hover",
+                    columns: grid.Columns(
+                    grid.Column("MemberId", header: "ID"),
+                    grid.Column("Fullname", "Fullname"),
+                    grid.Column("Part", "Part"),
+                    grid.Column("Split", "Split"),
+                    grid.Column("MaritalStatus", "M. Status"),
+                    grid.Column(header: "Assign?", format: @<text><input class="check-box" id="movechk" name="movechk" type="checkbox" value="@item.MemberId" /></text>)
+))
+                        <div class="pagination pagination-sm pagination-right">
+                            @grid.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-lg pagination-right")
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts{
+<script>
+    $("#Split_Id").change(function () {
+        partid = $("#PartId").val();
+        splitid = $("#SplitId");
+        document.getElementById("btnsplitpart").href = "Reshuffle?split=" + splitid + "&part=" + partid;
+    });
+    $('#PartId').change(function () {
+        partid = $("#PartId").val();
+        splitid = $("#ChoirSplit_Id");
+
+        $("#btnsplitpart").href = "Reshuffle?split=" + splitid + "&part=" + partid;
+    });
+
+   
+</script>
+
+}*@

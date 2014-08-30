@@ -1,0 +1,166 @@
+﻿@model HsmBI.Members
+
+@{
+    ViewBag.Title = Model.LastName;
+}
+
+<div class="pageheader">
+    <h2><i class="icon icon-profile"  ></i> Members</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/members/">Membership</a></li>
+            <li class="active">Member Detail</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row" >
+    
+    <section class="col-sm-10 col-md-4">
+        <div class="panel panel-default widget-photoday">
+            <div class="panel-body">
+                <div class="col-sm-12 col-md-12" style="height:40%; width:100%; margin-top:5px">
+                    <img src="~/Content/images/members.png" class="fitimage" alt="Member's Image">
+                </div>
+            <hr />
+                <div class="photo-details">
+
+                    <h4 >@Model.LastName.ToUpper()&nbsp;@Model.OtherNames</h4>
+                    <small >Current Position: <i class="icon icon-star-2"></i> @Model.Posts.Description</small>
+                    <small>Part: <i class="icon icon-bookmark"></i> @Model.ChoirParts.Part : <i class="icon icon-music" ></i> @Model.ChoirSplits.Description</small>
+                    <small class="text-muted"><i class="fa fa-map-marker"></i> @Model.HomeAddress</small>
+                </div><!-- photo-details -->
+                <ul class="photo-meta">
+                    <li><span><i class="fa fa-phone"></i> @Model.MobileNo</span></li>
+                    <li><a href="#"><i class="fa fa-email"></i> @Model.EmailAddress</a></li>
+                </ul>
+            </div><!-- panel-body -->
+        </div>
+    </section>
+    <div class="col-sm-10 col-md-8">
+        <section class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-btns" >
+                    <a href="" class="minimize" >&minus;</a>
+                </div>
+                <div class="panel-title">
+                    About: @Model.OtherNames - @Model.Nickname.ToLower()
+                    <div class="pull-right">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.MemberId }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="media">
+                        <div class="media-body">
+                            <ul class="list-unstyled list-info">
+                                <li class="ng-binding">
+                                    <span class="icon glyphicon glyphicon-user"  ></span>
+                                    <label>Gender:</label>
+                                    @Model.Gender 
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-calendar"></span>
+                                    <label>Birthday:</label>
+                                    @String.Format("{0:dd MMM}", @Model.Birthday)
+                                </li>
+                                <li>
+                                    <span class="icon icon-heart"></span>
+                                    <label>M. Status:</label>
+                                    @Model.MaritalStatus
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-calendar" ></span>
+                                    <label>Wedding:</label>
+                                    @String.Format("{0:dd-MMM-yyyy}", @Model.Wedding.GetValueOrDefault())
+                                </li>
+                                <li>
+                                    <span class="icon icon-map-2" ></span>
+                                    <label>Home Town</label>
+                                    @Model.HomeTown
+                                </li>
+                                <li>
+                                    <span class="icon icon-map" ></span>
+                                    <label>LGA</label>
+                                    @Model.LGA
+                                </li>
+                                <li>
+                                    <span class="icon icon-earth"   ></span>
+                                    <label>State:</label>
+                                    @Model.States.Name 
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-flag"></span>
+                                    <label>Nationality</label>
+                                    @Model.Nationality 
+                                </li>
+                                <li>
+                                    <span class="icon icon-briefcase" ></span>
+                                    <label>Occupation</label>
+                                    @Model.Occupations.Description
+                                </li>
+                                <li>
+                                    <span class="icon icon-map-marker"></span>
+                                    <label>Office Address</label>
+                                    @Model.OfficeAddress
+                                </li>
+                                <li>
+                                    <span class="icon icon-calendar-2" ></span>
+                                    <label>Joined HSoG: </label>
+                                    @Model.JoinedOn
+                                </li>
+                                <li>
+                                    <span class="icon icon-user-2"></span>
+                                    <label>Robe No</label>
+                                    @Model.RobeNo
+                                </li>
+                                <li>
+                                    <span class="icon icon-bar-chart" ></span>
+                                    <label>Availability:</label>
+                                    @Model.Availability.Remark
+                                </li>
+                                <li>
+                                    <span class="icon icon-bubbles-2" ></span>
+                                    <label>Friendship</label>
+                                    @Model.FriendshipGroups.Description 
+                                </li>
+                                <li>
+                                    <span class="icon icon-signup" ></span>
+                                    <label>Academy</label>
+                                    @Html.DisplayFor(model => model.Academy.LevelCode)
+                                </li>
+                                <li>
+                                    <span class="icon icon-signout" ></span>
+                                    <label>Attendance Id</label>
+                                    @Model.Attendance_id 
+                                </li>
+                                
+                                <li>
+                                    <span class="icon glyphicon glyphicon-link"></span>
+                                    <label>Next of Kin:</label>
+                                    @Model.NextOfKins
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-flag"></span>
+                                    <label>Remark</label>
+                                    @Model.Remarks
+                                </li>
+                                
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+       
+    </div>
+</div>
+

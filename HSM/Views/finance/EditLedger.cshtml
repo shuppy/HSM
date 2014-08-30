@@ -1,0 +1,100 @@
+﻿@model HsmBI.NominalLedger
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageheader">
+    <h2><i class="icon icon-edit" ></i> Edit Ledger Item</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li>Nominal Ledger</li>
+            <li class="active">Edit</li>
+        </ol>
+    </div>
+</div>
+<section class="panel panel-primary panel-alt">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <h4>
+                @ViewBag.Title
+
+            </h4>
+        </div>
+        <p>
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-warning">@TempData["error"]</div>
+            }
+        </p>
+    </div>
+    <div class="panel-body">
+        <section>
+            <div class="row col-md-7">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, "Ledger Name", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Description, new { @class = "form-control", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Description)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Code, new { @class = "form-control", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Code)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Intervals, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                <input type="number" min="1" id="Intervals" name="Intervals" class="form-control" required="required" value="5" />
+                                @Html.ValidationMessageFor(model => model.Intervals)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AccountType_id, "Account Type", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("AccountType_id", (SelectList)ViewBag.AccountType_id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.AccountType_id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PLItem_id, "P/L Item", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("PLItem_id", (SelectList)ViewBag.PLItem_id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PLItem_id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Update" class="btn btn-xs btn-default" /> @Html.ActionLink("Back to List", "nLedgers", null, new { @class = "btn btn-xs btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </section>
+    </div>
+</section>

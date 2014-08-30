@@ -1,0 +1,186 @@
+﻿@model HsmBI.Transactions
+
+@{
+    ViewBag.Title = "Dues Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li class="active">Dues Payment</li>
+        </ol>
+    </div>
+</div>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+
+<div class="row">
+    <section class="panel panel-profile  widget">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h4>
+                    @ViewBag.Title
+
+                </h4>
+            </div>
+            <p>
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-warning">@TempData["error"]</div>
+                }
+            </p>
+        </div>
+        <div class="panel-body">
+            <section>
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal col-md-7 col-sm-12 col-xs-12">
+
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Member_id, "Member name", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                <input id="members" name="members" class="form-control" />
+                                <input id="Member_id" name="Member_id" hidden="hidden" />
+                                @*@Html.DropDownList("Member_id", (SelectList)ViewBag.members, new { @class = "form-control" })*@
+                                @Html.ValidationMessageFor(model => model.Member_id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Amount, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.DecimalNumbersTextBox("Amount")
+                                @Html.ValidationMessageFor(model => model.Amount)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.DatePickerFor(model => model.Date)
+                                @*<input class="form-control datepicker" data-datepicker="datepicker" data-date-format="dd/mm/yyyy" id="Date1" name="Date1" /> *@
+                                @Html.ValidationMessageFor(model => model.Date)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Due_id, "Payment for", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("Due_id", (SelectList)ViewBag.due_id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Due_id)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Narration, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.TextArea("Narration", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Narration)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-9">
+                                <input type="submit" value="Create" class="btn btn-xs btn-default" /> @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-xs btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 hidden-xs hidden-sm">
+                        <div id="memdetails">
+                            @*<div class="col-md-8">
+                                <span>
+                                    <img src="~/content/images/members.png"  style="max-width:240px; border-radius:50%" />
+                                </span>
+                                <p class="text-center text-capitalize"  >Adewale Aderinwale</p>
+                            </div>*@
+                        </div>
+                    </div>
+                }
+
+
+            </section>
+        </div>
+
+    </section>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            HtmlHelpers.Init();
+           
+            $('#members').autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/members/autocomplete/",
+                        data: { "filter": request.term }, //data: "{'filter':'" + request.term + "'}",
+                        dataType: "json",
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Fullname,
+                                    value: item.id
+                                }
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus + errorThrown);
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function (even, ui) {
+                    $('#members').val(ui.item.label);
+                    $('#Member_id').val(ui.item.value);
+                    //can we do something funny, pweaseeeeeeeee 01:04 26:08:2014
+                    membersnapshot(ui.item.value);
+                    //yipeee. taaaannnnku - 01:21 26:08:2014
+                    return false;
+                }
+            });
+
+            
+        });
+        // Attach typeahead to account
+
+        var HtmlHelpers = {
+            Init: function () {
+                $(".filtered-text").keypress(HtmlHelpers.FilteredTextBox.CheckValue);
+            }
+        };
+
+        HtmlHelpers.FilteredTextBox = {
+            CheckValue: function (event) {
+                var value = String.fromCharCode(event.which);
+                var regex = new RegExp($(this).attr("data-regex"), "");
+
+                if (regex.test(value)) {
+                    event.preventDefault();
+                }
+            }
+        };
+
+        //$(document).bind('keypress', 'f3', function () {
+        //    alert("Save");
+        //});
+
+
+    </script>
+}

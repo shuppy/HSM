@@ -1,0 +1,114 @@
+﻿@model IEnumerable<HsmBI.NominalLedger>
+
+@{
+    ViewBag.Title = "Nominal Ledgers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li class="active">Nominal Ledger</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <section class="panel panel-profile widget ">
+        <div class="panel-heading"  >
+            <div class="panel-title"  >
+                <h4>@ViewBag.Title</h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <p>
+                <a href="~/Finance/CreateLedger" class="btn btn-xs btn-primary"><i class="icon icon-plus-4"></i> Create New</a>
+            </p>
+            @*@{
+                var grid = new WebGrid(
+                    Model, canPage: true, rowsPerPage: 50, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent",
+                    canSort: true);
+                grid.Pager(WebGridPagerModes.All);
+
+            }
+
+            <div id="gridContent">
+                @grid.Table(
+                    tableStyle: "table table-striped table-responsive table-hover",
+                    columns: grid.Columns(
+                    grid.Column("Description", "Account Name", canSort: true),
+                    grid.Column("Code", "Ledger Code", canSort: true),
+                    grid.Column("LastCode", "Last Code", canSort: true),
+                    grid.Column("Intervals", "Intervals"),
+                    grid.Column("AccountTypes.Description", "Account Type", canSort: true),
+                    grid.Column("PLItems.Description", "P/L Item", canSort: true)
+                    ))
+                <div class="pagination pagination-sm pagination-right">
+                    @grid.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-sm pagination-right")
+                </div>
+            </div>*@
+            <hr />
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>#</th>
+                    <th>
+                        Account Name
+                    </th>
+                    <th>
+                        Ledger Code
+                    </th>
+                    <th>
+                        Last Code
+                    </th>
+                    <th>
+                        Interval
+                    </th>
+                    <th>
+                        Account Type
+                    </th>
+                    <th>
+                        P/L Item
+                    </th>
+                    <th></th>
+                </tr>
+                @{
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        i += 1;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Intervals)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountTypes.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PLItems.Description)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditLedger", new { id = item.id }, new { @class = "btn btn-xs btn-default" }) |
+                                @Html.ActionLink("Delete", "DeleteLedgerAC", new { id = item.id }, new { @class = "btn btn-xs btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </section>
+</div>
+

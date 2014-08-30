@@ -1,0 +1,363 @@
+﻿@model IEnumerable<HsmBI.vwMembersList_General>
+
+@{
+    ViewBag.Title = "Choir List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Reports", "Index", "Report")</li>
+    <li class="active">Main</li>
+</ol>
+<hr />
+<div class="row row-fluid fluid">
+    <div class="innerAll">
+        <div class="widget">
+            <div class="widget-head">
+                <h4>Search Options</h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-2">
+                    <a role="button" data-toggle="modal" data-target="#membersoptions" class="btn btn-success btn-sm" title="Splits, parts, gender, status" ><span class="glyphicon glyphicon-user">&nbsp;Members options</span> </a>
+                </div>
+                <div class="col-md-2">
+                    <a role="button" data-toggle="modal" data-target="#birthdays" class="btn btn-success btn-sm" title="Birthdays: Birthday this month, this week, today, etc"><span class="glyphicon glyphicon-calendar" >&nbsp;Birthday</span> </a>
+                </div>
+                <div class="col-md-2">
+                    <a role="button" data-toggle="modal" class="btn btn-success btn-sm" data-target="#weddings" title="Wedding Anniversary: today, this month, specific month, last year, etc"><span class="glyphicon glyphicon-time">&nbsp;Wedding Ann.</span></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="carousel" class="btn btn-success btn-sm" title="Carousel view">Carousel view</a>
+                </div>
+                <div class="col-md-2">
+                    @Html.ActionLink("Alphabetical List", "List", "Report", new { role = "button", @class = "btn btn-success btn-sm" })
+                   
+                </div>
+                <div class="col-md-2">
+                    <button type="button" id="btnall" class="btn btn-default btn-sm" title="View all members, ordered by Part, Split, and fullname">View All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+@*Search Options this will popup on demand*@
+@*Search options for members direct information: Split, Part, Gender,Status*@
+<div id="membersoptions" class="row row-fluid col-md-10 modal fade in" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg " >
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="filterModalLabel">Members Filter</h4>
+            </div>
+            <div class="modal-body" >
+                <section>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="ChoirSplit_Id" class="control-label col-sm-3">Split</label>
+                            <div class="col-sm-8">
+                                @Html.DropDownList("ChoirSplit_Id", ViewBag.Splits as SelectList, new { @class = "form-control" })<br />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="PartId" class="control-label col-sm-3">Part</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("PartId", ViewBag.Parts as SelectList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row" >
+                        <div class="col-sm-6">
+                            <label for="gender" class="control-label col-sm-3">Gender</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="gender">
+                                    <option value="All">All</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Male">Male</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="status" class="control-label col-sm-3">M. Status</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="status">
+                                    <option value="Married">Married</option>
+                                    <option value="Single">Single</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                            <div class="form-horizontal"> 
+                                <div class="form-group">
+                                
+                                    <label for="name" class="control-label col-sm-4">Name</label>
+                                    <div class="col-md-7">
+                                        <input id="name" type="text" autocomplete="on" class="form-control" placeholder="Name.." />
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </section>
+               
+                    
+                
+            </div>
+            <div class="modal-footer">
+                <div class="row" >
+                    <div class="innerR" >
+                        <button type="button" id="btnname" class="btn btn-primary btn-sm" data-dismiss="modal">Filter name</button>
+                        <button type="button" id="btnsplit" class="btn btn-primary btn-sm" data-dismiss="modal">Filter split</button>
+                        <button type="button" id="btnpart" class="btn btn-primary btn-sm" data-dismiss="modal">Filter part</button>
+                        <button type="button" id="btngender" class="btn btn-primary btn-sm" data-dismiss="modal">Filter gender</button>
+                        <button type="button" id="btnstatus" class="btn btn-primary btn-sm" data-dismiss="modal">Filter status</button>
+                    </div>
+                    
+                </div>
+                <hr />
+                <div class="row" >
+                    <div class="innerR">
+                        <button type="button" id="btnsplitpart" class="btn btn-primary btn-sm" data-dismiss="modal">Split + Part</button>
+                        <button type="button" id="btnsplitstatus" class="btn btn-primary btn-sm" data-dismiss="modal">Split + Status</button>
+                        <button type="button" id="btnpartstatus" class="btn btn-primary btn-sm" data-dismiss="modal">Part + Status</button>
+                        <button type="button" id="btnstatusgender" class="btn btn-primary btn-sm" data-dismiss="modal">Gender + Status</button>
+                        <button type="button" id="btngendersplit" class="btn btn-primary btn-sm" data-dismiss="modal">Gender + Split</button>
+                        <button type="button" id="btnsplitpartstatus" class="btn btn-primary btn-sm" data-dismiss="modal">Split + Part + Status</button>
+                        <button type="button" id="btnsplitgenderstatus" class="btn btn-primary btn-sm" data-dismiss="modal">Split + Gender + Status</button>
+                    </div>
+                    
+                </div>
+                <hr />
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*Search options for birthdays.*@
+<div id="birthdays" class="row row-fluid col-md-10 modal fade in">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" >
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="filterModalLabel">Birthday Filter</h4>
+            </div>
+
+            <div class="modal-body" >
+                <section>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="Months" class="control-label col-md-3">Month</label> 
+                            <div class="col-md-8">
+                                @Html.DropDownList("Months", ViewBag.Months as SelectList, new { @class="form-control"})
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="date" class="control-label col-sm-3">Start Date</label>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" id="date" />
+                            </div>
+                        </div>
+                       
+                    </div>
+                </section>
+            </div>
+
+            <div class="modal-footer" >
+                <div class="row">
+                    <div class="innerR">
+                        <button type="button" id="btnbthismonth" class="btn btn-primary btn-sm" data-dismiss="modal">This month</button>
+                        <button type="button" id="btnbmonth" class="btn btn-primary btn-sm" data-dismiss="modal">By month</button>
+                        <button type="button" id="btnbweek" class="btn btn-primary btn-sm" data-dismiss="modal">This week</button>
+                        <button type="button" id="btnbtoday" class="btn btn-primary btn-sm" data-dismiss="modal">Today</button>
+                        <button type="button" id="btnbdate" class="btn btn-primary btn-sm" data-dismiss="modal">On date</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*Search options for Weddings.*@
+<div class="row row-fluid col-md-10 modal fade in bouce-In" id="weddings">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="filterModalLabel">Wedding Anniversary</h4>
+            </div>
+
+            <div class="modal-body">
+                <section>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="wmonths" class="control-label col-md-3">Month</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("wmonths", ViewBag.Months as SelectList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="wdate" class="control-label col-sm-3">Start Date</label>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" id="wdate" />
+                            </div>
+                        </div>
+                       
+                    </div>
+                </section>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="innerR">
+                        <button type="button" id="btnwthismonth" class="btn btn-primary btn-sm" data-dismiss="modal">This month</button>
+                        <button type="button" id="btnwmonth" class="btn btn-primary btn-sm" data-dismiss="modal">By month</button>
+                        <button type="button" id="btnwweek" class="btn btn-primary btn-sm" data-dismiss="modal">This week</button>
+                        <button type="button" id="btnwtoday" class="btn btn-primary btn-sm" data-dismiss="modal">Today</button>
+                        <button type="button" id="btnwdate" class="btn btn-primary btn-sm" data-dismiss="modal">On date</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row row-fluid">
+    <div class="panel">
+        <div class="panel-heading" >
+            <h4 id="akole"></h4>
+        </div>
+        <div class="panel-body" >
+            <img id="loader" hidden="hidden" src="~/Content/images/ajax-loader.gif" />
+            <div id="memberlist" class="innerLR">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fullname</th>
+                            <th>Part</th>
+                            <th>Split</th>
+                            <th>Mobile No</th>
+                            <th>eMail</th>
+                            <th>Friendship Grp</th>
+                            <th>M. Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div id="akojopo" class="panel-footer" >
+            
+        </div>
+    </div>
+</div>
+@*<script type="text/javascript">
+var url = '@Url.Action("DemoPurpose","ChoirSplit")';
+    $('#search').autocomplete({
+   source: function (request, response) {
+$.ajax({
+     url: url,
+         data: { query: request.term },
+              dataType: 'json',
+              type: 'GET',
+        success: function (data) {
+    response($.map(data,
+function (item) {
+               return {
+        label: item.Fullname,
+        value1: item.MemberId
+                        }
+                    }));
+                }
+            })
+        },
+        select:
+function (event, ui) {
+            $('#name').val(ui.item.label);
+            $('#MemberId').val(ui.item.value1);
+return false;
+        },
+        minLength: 1
+    });
+   </script>*@
+
+@section scripts{
+    <script>
+    $('#btnall').click(function () {
+        allmembers();
+    });
+    $('#btnsplit').click(function () {
+        membersbysplit();
+    });
+    $('#btnpart').click(function () {
+        membersbypart();
+    });
+    $('#btngender').click(function () {
+        membersbygender();
+    });
+    $('#btnstatus').click(function () {
+        membersbystatus();
+    });
+    $('#btnsplitpart').click(function () {
+        membersbysplitnpart();
+    });
+    $('#btnpartstatus').click(function () {
+        membersbypartnstatus();
+    });
+    $('#btnsplitstatus').click(function () {
+        membersbysplitnstatus();
+    });
+    $('#btngendersplit').click(function () {
+        membersbysplitngender();
+    });
+    $('#btnstatusgender').click(function () {
+        membersbystatusngender();
+    });
+    $('#btnsplitpartstatus').click(function () {
+        membersbypartnsplitnstatus();
+    });
+    $('#btnsplitgenderstatus').click(function () {
+        membersbysplitngendernstatus();
+    });
+    //Birthdays
+    $('#btnbthismonth').click(function () {
+        birthdaythismonth();
+    });
+    $('#btnbmonth').click(function () {
+        birthdaybymonth();
+    });
+    $('#btnbweek').click(function () {
+        birthdaythisweek();
+    });
+    $('#btnbtoday').click(function () {
+        birthdaytoday();
+    });
+    $('#btnbdate').click(function () {
+        birthdaybydate();
+    });
+    //Wedding
+    $('#btnwmonth').click(function () {
+        weddingbymonth();
+    });
+    $('btnwthismonth').click(function () {
+        weddingthismonth();
+    });
+    $('#btnwweek').click(function () {
+        weddingthisweek();
+    });
+    $('#btnwtoday').click(function () {
+        weddingtoday();
+    });
+    $('#btnwdate').click(function () {
+        weddingbydate();
+    });
+
+</script>
+
+
+
+}

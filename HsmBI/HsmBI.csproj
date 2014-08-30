@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1FDD8DD1-F76E-4C4E-8AEC-44C328C2B011}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HsmBI</RootNamespace>
+    <AssemblyName>HsmBI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Academy.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountItems.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountTypes.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Attendance.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Availability.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChoirParts.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChoirSplits.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CodeAlgorithm.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dues.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Events.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FriendshipGroups.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HSEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HSEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HSEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HSEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HSEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="journals.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ledger.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Members.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlyDues.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NextOfKins.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NominalLedger.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Occupations.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLItems.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Positions_History.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Posts.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="States.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tickets.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendors.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwMembersList_Birthday.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwMembersList_General.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_Membership.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_OAuthMembership.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_Roles.cs">
+      <DependentUpon>HSEntity.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="HSEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HSEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HSEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HSEntity.edmx</DependentUpon>
+      <LastGenOutput>HSEntity.Context.cs</LastGenOutput>
+    </None>
+    <None Include="HSEntity.edmx.diagram">
+      <DependentUpon>HSEntity.edmx</DependentUpon>
+    </None>
+    <None Include="HSEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HSEntity.edmx</DependentUpon>
+      <LastGenOutput>HSEntity.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

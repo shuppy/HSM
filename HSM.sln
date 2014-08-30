@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSM", "HSM\HSM.csproj", "{3E18DB06-D111-492C-BAEF-79C3185F550C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsmBI", "HsmBI\HsmBI.csproj", "{1FDD8DD1-F76E-4C4E-8AEC-44C328C2B011}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E18DB06-D111-492C-BAEF-79C3185F550C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E18DB06-D111-492C-BAEF-79C3185F550C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E18DB06-D111-492C-BAEF-79C3185F550C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E18DB06-D111-492C-BAEF-79C3185F550C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FDD8DD1-F76E-4C4E-8AEC-44C328C2B011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FDD8DD1-F76E-4C4E-8AEC-44C328C2B011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FDD8DD1-F76E-4C4E-8AEC-44C328C2B011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FDD8DD1-F76E-4C4E-8AEC-44C328C2B011}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

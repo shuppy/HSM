@@ -1,0 +1,66 @@
+﻿@model HsmBI.FriendshipGroups
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<div class="pageheader">
+    <h2><i class="icon icon-add-to-list" ></i> Friendship Group</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/members/">Membership</a></li>
+            <li>Friendship Groups</li>
+            <li class="active">Create</li>
+        </ol>
+    </div>
+</div>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="inner-shadow">
+            <div class="panel panel-default">
+                <section class="panel-heading-empty"></section>
+                <section class="panel-body">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal col-md-7">
+                        <h4>Add Friendship Group</h4>
+                        <hr />
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Description)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="panel-footer">
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

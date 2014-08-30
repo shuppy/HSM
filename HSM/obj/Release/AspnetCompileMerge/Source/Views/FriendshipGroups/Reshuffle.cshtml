@@ -1,0 +1,138 @@
+﻿@model IEnumerable<HsmBI.vwMembersList_General>
+
+@{
+    ViewBag.Title = "Reshuffle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageheader">
+    <h2><i class="icon icon-group" ></i> Friendship Group</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/members/">Membership</a></li>
+            <li >Friendship Groups</li>
+            <li class="active" >Reshuffle</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row row-fluid">
+    <div class="innerLR">
+        <div class="widget">
+            <div class="panel-heading">
+                <div class="innerAll">
+                    <div class="form-horizontal">
+
+                        <div class="row" >
+                            <div class="innerAll">
+                                @using (Html.BeginForm("filterpart", "FriendshipGroups"))
+                                {
+                                    <div class="col-md-6">
+                                        <label for="parts" class="control-label col-sm-4">Parts</label>
+                                        <div class="col-md-7">
+                                            @Html.DropDownList("parts", ViewBag.Parts as SelectList, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <input type="submit" value="filter by part..." class="btn btn-sm btn-active" />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="row" hidden="hidden">
+                            <div class="innerAll">
+                                @using (Html.BeginForm("filterclub", "FriendshipGroups"))
+                                {
+                                    <div class="col-md-6">
+                                        <label for="clubs" class="control-label col-sm-4">Club</label>
+                                        <div class="col-md-7">
+                                            @Html.DropDownList("clubs", ViewBag.Clubs as SelectList, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <input type="submit" value="filter by club..." class="btn btn-sm btn-active" />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row" >
+                            <div class="innerAll" >
+                                @using (Html.BeginForm("filtername", "FriendshipGroups"))
+                                {
+                                    <div class="form-horizontal" >
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label for="name" class="control-label col-sm-4">Filter name</label>
+                                                <div class="col-md-7">
+                                                    <input class="form-control" id="name" name="name" type="text" placeholder="Member's name" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <input type="submit" value="filter by name..." class="btn btn-sm btn-active" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                               
+                            
+                        
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="innerLR">
+                @using (Html.BeginForm("movetoclub", "FriendshipGroups"))
+                {
+                    //Put the choir to move to on top
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="choir" class="control-label col-sm-4">Move to:</label>
+                            <div class="col-md-4">
+                                @Html.DropDownList("club", ViewBag.Clubs as SelectList, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-4">
+                                <input type="submit" value="Assign..." class="btn btn-sm btn-active" />
+                            </div>
+                        </div>
+                    </div>
+                    //Choir List selected from the main option.
+
+                    var grid = new WebGrid(
+                        Model, canPage: true, rowsPerPage: 50, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent",
+                        canSort: true);
+                    grid.Pager(WebGridPagerModes.All);
+
+
+
+                    <div id="gridContent">
+                        @grid.Table(
+                    tableStyle: "table table-striped table-bordered table-responsive table-hover",
+                    columns: grid.Columns(
+                    grid.Column("MemberId", header: "ID"),
+                    grid.Column("Fullname", "Fullname"),
+                    grid.Column("Part", "Part"),
+                    grid.Column("Split", "Split"),
+                    grid.Column("Friendship_Group", "Group"),
+                    grid.Column(header: "Assign?", format: @<text><input class="check-box" id="movechk" name="movechk" type="checkbox" value="@item.MemberId" /></text>)
+))
+                        <div class="pagination pagination-sm pagination-right">
+                            @grid.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-lg pagination-right")
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+﻿@model IEnumerable<HsmBI.journals>
+
+@{
+    ViewBag.Title = "Journals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li class="active">Journals</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="panel panel-default panel-dark">
+        <div class="panel-heading" >
+            <div class="panel-title" >
+                @ViewBag.Title
+            </div>
+        </div>
+        <div class="panel-body" >
+            <p>
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-xs btn-primary" })
+            </p>
+            <br />
+            <table id="journal" class="table table-striped table-hover table-responsive"   >
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Narration)
+                        </th>
+                        <th>
+                            Transdate
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.User_Id)
+                        </th>*@
+                        <th>
+                            Cr Account
+                        </th>
+                        <th>
+                            Dr Account
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.Dues.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tickets.TicketNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tickets1.TicketNo)
+                        </th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Narration)
+                            </td>
+                            <td>
+                                @String.Format("{0:dd-MMM-yy}", item.transdate)
+                            </td>
+                            <td>
+                                @String.Format("{0:N2}", item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountItems.Description )
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountItems1.Description )
+                            </td>
+                           
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Dues.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tickets.TicketNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tickets1.TicketNo)
+                            </td>*@
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+               
+
+            </table>
+        </div>
+    </div>
+</div> 
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#journal').dataTable();
+        });
+    </script>
+}

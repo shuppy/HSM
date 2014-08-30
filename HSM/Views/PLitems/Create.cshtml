@@ -1,0 +1,71 @@
+﻿@model HsmBI.PLItems
+
+@{
+    ViewBag.Title = "Create P/L Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li><a href="~/AccountTypes">P/L Items</a> </li>
+            <li class="active">Create</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row" >
+    <section class="panel panel-profile  widget">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h4>
+                    @ViewBag.Title
+
+                </h4>
+            </div>
+            <p>
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-warning">@TempData["error"]</div>
+                }
+            </p>
+        </div>
+        <div class="panel-body">
+            <section>
+                <div class="row col-md-7">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>PLItems</h4>
+                            <hr />
+                            @Html.ValidationSummary(true)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, "Item Name", new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Description)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-xs btn-default" /> @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-xs btn-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </section>
+</div>

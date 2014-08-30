@@ -1,0 +1,10 @@
+C:\Projects\HSM Portal\HSM\HsmBI\bin\Release\HsmBI.dll.config
+C:\Projects\HSM Portal\HSM\HsmBI\bin\Release\HsmBI.dll
+C:\Projects\HSM Portal\HSM\HsmBI\bin\Release\HsmBI.pdb
+C:\Projects\HSM Portal\HSM\HsmBI\bin\Release\EntityFramework.dll
+C:\Projects\HSM Portal\HSM\HsmBI\bin\Release\EntityFramework.SqlServer.dll
+C:\Projects\HSM Portal\HSM\HsmBI\bin\Release\EntityFramework.xml
+C:\Projects\HSM Portal\HSM\HsmBI\bin\Release\EntityFramework.SqlServer.xml
+C:\Projects\HSM Portal\HSM\HsmBI\obj\Release\HsmBI.csprojResolveAssemblyReference.cache
+C:\Projects\HSM Portal\HSM\HsmBI\obj\Release\HsmBI.dll
+C:\Projects\HSM Portal\HSM\HsmBI\obj\Release\HsmBI.pdb

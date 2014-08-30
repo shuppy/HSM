@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HsmBI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="defaultcon" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;metadata=res://*/HSEntity.csdl|res://*/HSEntity.ssdl|res://*/HSEntity.msl;provider=System.Data.SqlClient;provider connection string=&amp;amp;quot;data source=SQL5008.Smarterasp.net;initial catalog=DB_98E871_hsmdb_admin;integrated security=True;id=DB_98E871_hsmdb_admin;Password=hsm00912;MultipleActiveResultSets=True;App=EntityFramework&amp;amp;quot;&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">metadata=res://*/HSEntity.csdl|res://*/HSEntity.ssdl|res://*/HSEntity.msl;provider=System.Data.SqlClient;provider connection string=&amp;quot;data source=SQL5008.Smarterasp.net;initial catalog=DB_98E871_hsmdb_admin;integrated security=True;id=DB_98E871_hsmdb_admin;Password=hsm00912;MultipleActiveResultSets=True;App=EntityFramework&amp;quot;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,91 @@
+﻿@model HsmBI.journals
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>journals</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Narration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Narration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountItems.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountItems.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountItems1.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountItems1.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dues.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dues.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tickets.TicketNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tickets.TicketNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tickets1.TicketNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tickets1.TicketNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,147 @@
+﻿@model HsmBI.Vendors
+
+@{
+    ViewBag.Title = "Update Vendor's Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pageheader">
+    <h2><i class="icon icon-money"></i> Finance</h2>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li><a href="~/">HSoG</a></li>
+            <li><a href="~/finance/">Finance</a></li>
+            <li><a href="~/Vendors">Vendors</a> </li>
+            <li class="active">Edit</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <section class="panel panel-profile  widget">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h4>
+                    @ViewBag.Title
+
+                </h4>
+            </div>
+            <p>
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-warning">@TempData["error"]</div>
+                }
+            </p>
+        </div>
+        <div class="panel-body">
+            <section>
+                <div class="row col-md-7">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Fullname, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.Fullname, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Fullname)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextArea("Address", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Mobile, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Mobile)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.eMail, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.eMail, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.eMail)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BBMPin, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.BBMPin, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BBMPin)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BankAC, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.BankAC, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BankAC)
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.PayableAC, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PayableAC)
+                                        @Html.ValidationMessageFor(model => model.PayableAC)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ReceivableAC, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ReceivableAC)
+                                        @Html.ValidationMessageFor(model => model.ReceivableAC)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ExpenseAC, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ExpenseAC)
+                                        @Html.ValidationMessageFor(model => model.ExpenseAC)
+                                    </div>
+                                </div>*@
+
+                            @*<div class="form-group">
+                                    In the future
+                                    @Html.LabelFor(model => model.photo, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.photo)
+                                        @Html.ValidationMessageFor(model => model.photo)
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Update" class="btn btn-xs btn-default" /> @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-xs btn-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>

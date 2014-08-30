@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hsmdbModelStoreContainer" CdmEntityContainer="defaultcon">
+    <EntitySetMapping Name="Academy">
+      <EntityTypeMapping TypeName="hsmdbModel.Academy">
+        <MappingFragment StoreEntitySet="Academy">
+          <ScalarProperty Name="sn" ColumnName="sn" />
+          <ScalarProperty Name="LevelCode" ColumnName="LevelCode" />
+          <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance">
+      <EntityTypeMapping TypeName="hsmdbModel.Attendance">
+        <MappingFragment StoreEntitySet="Attendance">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Availability">
+      <EntityTypeMapping TypeName="hsmdbModel.Availability">
+        <MappingFragment StoreEntitySet="Availability">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChoirParts">
+      <EntityTypeMapping TypeName="hsmdbModel.ChoirParts">
+        <MappingFragment StoreEntitySet="ChoirParts">
+          <ScalarProperty Name="sn" ColumnName="sn" />
+          <ScalarProperty Name="Part" ColumnName="Part" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChoirSplits">
+      <EntityTypeMapping TypeName="hsmdbModel.ChoirSplits">
+        <MappingFragment StoreEntitySet="ChoirSplits">
+          <ScalarProperty Name="SplitId" ColumnName="SplitId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeAlgorithm">
+      <EntityTypeMapping TypeName="hsmdbModel.CodeAlgorithm">
+        <MappingFragment StoreEntitySet="CodeAlgorithm">
+          <ScalarProperty Name="sn" ColumnName="sn" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Part_id" ColumnName="Part_id" />
+          <ScalarProperty Name="LastNumber" ColumnName="LastNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="hsmdbModel.Events">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FriendshipGroups">
+      <EntityTypeMapping TypeName="hsmdbModel.FriendshipGroups">
+        <MappingFragment StoreEntitySet="FriendshipGroups">
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="hsmdbModel.Members">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Application_id" ColumnName="Application_id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="OtherNames" ColumnName="OtherNames" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Wedding" ColumnName="Wedding" />
+          <ScalarProperty Name="OccupationId" ColumnName="OccupationId" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="ChoirSplit_Id" ColumnName="ChoirSplit_Id" />
+          <ScalarProperty Name="AvailabilityId" ColumnName="AvailabilityId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="StateOfOriginId" ColumnName="StateOfOriginId" />
+          <ScalarProperty Name="LGA" ColumnName="LGA" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="RobeNo" ColumnName="RobeNo" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+          <ScalarProperty Name="JoinedOn" ColumnName="JoinedOn" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="HomeTown" ColumnName="HomeTown" />
+          <ScalarProperty Name="Friendship_Id" ColumnName="Friendship_Id" />
+          <ScalarProperty Name="Attendance_id" ColumnName="Attendance_id" />
+          <ScalarProperty Name="Academy_Id" ColumnName="Academy_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NextOfKins">
+      <EntityTypeMapping TypeName="hsmdbModel.NextOfKins">
+        <MappingFragment StoreEntitySet="NextOfKins">
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="OtherNames" ColumnName="OtherNames" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Occupations">
+      <EntityTypeMapping TypeName="hsmdbModel.Occupations">
+        <MappingFragment StoreEntitySet="Occupations">
+          <ScalarProperty Name="OccupationId" ColumnName="OccupationId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions_History">
+      <EntityTypeMapping TypeName="hsmdbModel.Positions_History">
+        <MappingFragment StoreEntitySet="Positions_History">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="member_id" ColumnName="member_id" />
+          <ScalarProperty Name="Post_Id" ColumnName="Post_Id" />
+          <ScalarProperty Name="DateResumed" ColumnName="DateResumed" />
+          <ScalarProperty Name="DateVacated" ColumnName="DateVacated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="hsmdbModel.Posts">
+        <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="hsmdbModel.States">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfile">
+      <EntityTypeMapping TypeName="hsmdbModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Membership">
+      <EntityTypeMapping TypeName="hsmdbModel.webpages_Membership">
+        <MappingFragment StoreEntitySet="webpages_Membership">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_OAuthMembership">
+      <EntityTypeMapping TypeName="hsmdbModel.webpages_OAuthMembership">
+        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Roles">
+      <EntityTypeMapping TypeName="hsmdbModel.webpages_Roles">
+        <MappingFragment StoreEntitySet="webpages_Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwMembersList_Birthday">
+      <EntityTypeMapping TypeName="hsmdbModel.vwMembersList_Birthday">
+        <MappingFragment StoreEntitySet="vwMembersList_Birthday">
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Part" ColumnName="Part" />
+          <ScalarProperty Name="Split" ColumnName="Split" />
+          <ScalarProperty Name="Friendship_Group" ColumnName="Friendship Group" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="SplitId" ColumnName="SplitId" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="BirthMonth" ColumnName="BirthMonth" />
+          <ScalarProperty Name="Wedding" ColumnName="Wedding" />
+          <ScalarProperty Name="WeddingMonth" ColumnName="WeddingMonth" />
+          <ScalarProperty Name="WeddingDay" ColumnName="WeddingDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwMembersList_General">
+      <EntityTypeMapping TypeName="hsmdbModel.vwMembersList_General">
+        <MappingFragment StoreEntitySet="vwMembersList_General">
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Part" ColumnName="Part" />
+          <ScalarProperty Name="Split" ColumnName="Split" />
+          <ScalarProperty Name="Friendship_Group" ColumnName="Friendship Group" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="SplitId" ColumnName="SplitId" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="hsmdbModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+      <EndProperty Name="webpages_Roles">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="UserProfile">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="AccountItems">
+      <EntityTypeMapping TypeName="hsmdbModel.AccountItems">
+        <MappingFragment StoreEntitySet="AccountItems">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="ControlAC" ColumnName="ControlAC" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Ledger_Id" ColumnName="Ledger_Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountTypes">
+      <EntityTypeMapping TypeName="hsmdbModel.AccountTypes">
+        <MappingFragment StoreEntitySet="AccountTypes">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ledger">
+      <EntityTypeMapping TypeName="hsmdbModel.ledger">
+        <MappingFragment StoreEntitySet="ledger">
+          <ScalarProperty Name="journal_id" ColumnName="journal_id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="transdate" ColumnName="transdate" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Account_id" ColumnName="Account_id" />
+          <ScalarProperty Name="Ticket_id" ColumnName="Ticket_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NominalLedger">
+      <EntityTypeMapping TypeName="hsmdbModel.NominalLedger">
+        <MappingFragment StoreEntitySet="NominalLedger">
+          <ScalarProperty Name="PLItem_id" ColumnName="PLItem_id" />
+          <ScalarProperty Name="AccountType_id" ColumnName="AccountType_id" />
+          <ScalarProperty Name="Intervals" ColumnName="Intervals" />
+          <ScalarProperty Name="LastCode" ColumnName="LastCode" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLItems">
+      <EntityTypeMapping TypeName="hsmdbModel.PLItems">
+        <MappingFragment StoreEntitySet="PLItems">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tickets">
+      <EntityTypeMapping TypeName="hsmdbModel.tickets">
+        <MappingFragment StoreEntitySet="tickets">
+          <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dues">
+      <EntityTypeMapping TypeName="hsmdbModel.Dues">
+        <MappingFragment StoreEntitySet="Dues">
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="crAC" ColumnName="crAC" />
+          <ScalarProperty Name="drAC" ColumnName="drAC" />
+          <ScalarProperty Name="IsMonthly" ColumnName="IsMonthly" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonthlyDues">
+      <EntityTypeMapping TypeName="hsmdbModel.MonthlyDues">
+        <MappingFragment StoreEntitySet="MonthlyDues">
+          <ScalarProperty Name="DateId" ColumnName="DateId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreateLedgerAccount" FunctionName="hsmdbModel.Store.CreateLedgerAccount" />
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="hsmdbModel.Vendors">
+        <MappingFragment StoreEntitySet="Vendors">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="ExpenseAC" ColumnName="ExpenseAC" />
+          <ScalarProperty Name="ReceivableAC" ColumnName="ReceivableAC" />
+          <ScalarProperty Name="PayableAC" ColumnName="PayableAC" />
+          <ScalarProperty Name="BankAC" ColumnName="BankAC" />
+          <ScalarProperty Name="BBMPin" ColumnName="BBMPin" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="journals">
+      <EntityTypeMapping TypeName="hsmdbModel.journals">
+        <MappingFragment StoreEntitySet="journals">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="journaltype_id" ColumnName="journaltype_id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CrAC" ColumnName="CrAC" />
+          <ScalarProperty Name="DrAC" ColumnName="DrAC" />
+          <ScalarProperty Name="refticketno" ColumnName="refticketno" />
+          <ScalarProperty Name="ticketno" ColumnName="ticketno" />
+          <ScalarProperty Name="transdate" ColumnName="transdate" />
+          <ScalarProperty Name="Narration" ColumnName="Narration" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="raiseJournal" FunctionName="hsmdbModel.Store.raiseJournal" />
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="hsmdbModel.Transactions">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="Narration" ColumnName="Narration" />
+          <ScalarProperty Name="journal_id" ColumnName="journal_id" />
+          <ScalarProperty Name="Due_id" ColumnName="Due_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Member_id" ColumnName="Member_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

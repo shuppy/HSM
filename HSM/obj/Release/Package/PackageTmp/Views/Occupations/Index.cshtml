@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HsmBI.Occupations>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>Settings </li>
+    <li>@Html.ActionLink("Occupations", "Index", "Occupations")</li>
+    <li class="active">Create</li>
+</ol>
+<hr />
+<h2>Occupations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-bordered table-responsive table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OccupationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OccupationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OccupationId })
+        </td>
+    </tr>
+}
+
+</table>
